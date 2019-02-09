@@ -1,5 +1,5 @@
 FROM arm64v8/debian:9 as builder
-COPY qemu-aarc64-static /usb/bin/
+COPY qemu-aarch64-static /usr/bin/
 
 RUN apt-get update && apt-get install -y \
 		autoconf \
