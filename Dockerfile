@@ -1,4 +1,5 @@
-FROM debian:9 as builder
+FROM arm64v8/debian:9 as builder
+COPY qemu-aarc64-static /usb/bin/
 
 RUN apt-get update && apt-get install -y \
 		autoconf \
@@ -37,7 +38,8 @@ RUN ./configure --prefix /usr
 RUN make
 RUN make install DESTDIR=/usr/src/output
 
-FROM debian:9
+FROM arm64v8/debian:9
+COPY qemu-aarch64-static /usr/bin/
 
 RUN apt-get update && apt-get install -y \
 		libavcodec57 \
